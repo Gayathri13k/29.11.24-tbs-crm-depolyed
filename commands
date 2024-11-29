@@ -1,0 +1,28 @@
+cd pro-doc/
+ls -l
+unzip ims.zip
+cd ims/
+ls -l
+npm i  # in this crm i added dockerfile and nginx-conf need to install npm and build for node modules and build file so execute (6,7,8 commands )
+npm run build
+npm start # tested locally the app is running 
+# docker image config 
+sudo apt update -y
+sudo apt install docker.io 
+sudo docker -v
+sudo systemctl start docker
+sudo systemctl status docker
+sudo usermod -a -G docker ubuntu # adding users to docker group
+touch Dockerfile
+vim Dockerfile
+ls -l
+touch nginx.conf
+vim nginx.conf
+sudo docker build -t my-crm-app .
+sudo docker run -p 8080:80 my-crm-app
+ 
+#to Check which process is using port 80:
+sudo lsof -i :80
+#Verify that your app is running:
+http://<your-server-ip>
+curl http://localhost
